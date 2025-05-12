@@ -25,6 +25,7 @@ return {
 			"gitignore",
 			"ssh_config",
 			"yaml",
+            "glsl",
 		},
 		highlight = {
 			enable = true,
@@ -40,4 +41,4 @@ return {
 	config = function(_, opts)
 		require("nvim-treesitter.configs").setup(opts)
 	end,
-}
+}   

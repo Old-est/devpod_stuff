@@ -1,33 +1,45 @@
-return -- lazy.nvim
-{
-	"folke/snacks.nvim",
-	priority = 1000,
-	lazy = false,
-	---@type snacks.Config
-	opts = {
-		dashboard = {
-			enabled = true,
-			-- your dashboard configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
-		rename = { enabled = true },
-		input = { enabled = true },
-		notifier = { enabled = true },
-		picker = { enabled = true, cwd = true },
-	},
-	keys = {
+return {
+  "folke/snacks.nvim",
+    priority = 1000,
+  lazy = false,
+  ---@type snacks.Config
+  opts = {
+    explorer = {
+	enabled = true,
+      -- your explorer configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    picker = {enabled = true, cwd = true},
+    notifier = { enabled = true },
+    dashboard = {enabled = true},
+    indent = {enabled = true},
+  },
+  keys = {
+	  {"<leader><Tab>", function() Snacks.explorer() end, desc = "Toggle tree"},
 		{
 			"<leader>ff",
 			function()
-				Snacks.picker.smart()
+				Snacks.picker.files()
 			end,
-			desc = "Smart Find Files",
+			desc = "Find Files",
 		},
 		{
 			"<leader>fb",
 			function()
-				Snacks.picker.buffers()
+				Snacks.picker.buffers({
+					on_show = function()
+						vim.cmd.stopinsert()
+					end,
+					win = {
+						input = {
+							keys = {
+								["d"] = "bufdelete",
+							},
+						},
+						list = { keys = { ["d"] = "bufdelete" } },
+					},
+				})
 			end,
 			desc = "Buffers",
 		},
