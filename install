@@ -11,6 +11,7 @@ echo "Nvim config linked"
 
 echo "Installing needed packages"
 packages=(
+    software-properties-common
     clangd
     npm
 )
@@ -19,5 +20,14 @@ for package in "${packages[@]}"; do
     echo "Installing $package..."
     sudo apt-get install -y "$package"
 done
+echo "Installing nvim"
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt update
+sudo apt install neovim
+echo "Nvim is installed"
+
+"Installing from pip"
+pip install basedpyright
+
 
 echo "All packages from the setup script have been installed."
