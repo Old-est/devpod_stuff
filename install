@@ -23,7 +23,7 @@ done
 echo "Installing nvim"
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt update
-sudo apt install neovim
+sudo apt install -y neovim
 echo "Nvim is installed"
 
 "Installing from pip"
