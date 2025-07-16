@@ -16,14 +16,16 @@ packages=(
     npm
 )
 
+sudo apt update && sudo apt upgrade
+
 for package in "${packages[@]}"; do
     echo "Installing $package..."
     sudo apt-get install -y "$package"
 done
 echo "Installing nvim"
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt update
-sudo apt install -y neovim
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz
+tar xzvf nvim-linux-x86_64.tar.gz
+alias nvim='./nvim-linux-x86_64/bin/nvim'
 echo "Nvim is installed"
 
 "Installing from pip"
