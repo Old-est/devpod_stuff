@@ -30,6 +30,7 @@ echo "Nvim is installed"
 
 "Installing from pip"
 pip install basedpyright
+pip install black
 
 
 echo "All packages from the setup script have been installed."

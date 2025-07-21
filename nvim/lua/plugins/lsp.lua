@@ -14,6 +14,7 @@ function spec.config()
         end
         vim.lsp.enable(name)
 
+
         local packages = {
             black = "black"
         }
@@ -43,8 +44,11 @@ function spec.config()
             -- keymap.set("n", "<leader>ls", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
             opts.desc = "Show documentation for what is under cursor"
-            keymap.set("n", "<leader>lk", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
+            keymap.set("n", "<leader>lk", function()
+                vim.lsp.buf.hover({
+                    border = 'rounded',
+                })
+            end, opts) -- show documentation for what is under cursor
         end,
     })
 
