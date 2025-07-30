@@ -12,6 +12,7 @@ echo "Nvim config linked"
 echo "Installing needed packages"
 packages=(
     software-properties-common
+    g++
     clangd
     wget
     ripgrep
@@ -28,7 +29,7 @@ done
 echo "Installing tree-sitter-cli"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 source ~/.bashrc
-nvm install v24.1.0
+nvm install 24.4.1
 sudo npm -g install tree-sitter-cli
 echo "tree-sitter-cli is installed"
 
