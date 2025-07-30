@@ -36,7 +36,7 @@ echo "Installing nvim"
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz
 tar xzvf nvim-linux-x86_64.tar.gz
 rm nvim-linux-x86_64.tar.gz
-echo "alias nvim='./nvim-linux-x86_64/bin/nvim'" >> ~/.bashrc
+echo "alias nvim='$PWD/nvim-linux-x86_64/bin/nvim'" >> ~/.bashrc
 source ~/.bashrc
 echo "Nvim is installed"
 
