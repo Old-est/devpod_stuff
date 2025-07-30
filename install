@@ -13,25 +13,35 @@ echo "Installing needed packages"
 packages=(
     software-properties-common
     clangd
-    npm
     wget
+    ripgrep
+    fd-find
 )
 
-sudo apt update && sudo apt upgrade
+sudo apt update && sudo apt upgrade -y
 
 for package in "${packages[@]}"; do
     echo "Installing $package..."
     sudo apt-get install -y "$package"
 done
+
+echo "Installing tree-sitter-cli"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+source ~/.bashrc
+nvm install v24.1.0
+sudo npm -g install tree-sitter-cli
+echo "tree-sitter-cli is installed"
+
 echo "Installing nvim"
 wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-x86_64.tar.gz
 tar xzvf nvim-linux-x86_64.tar.gz
-alias nvim='./nvim-linux-x86_64/bin/nvim'
+rm nvim-linux-x86_64.tar.gz
+echo "alias nvim='./nvim-linux-x86_64/bin/nvim'" >> ~/.bashrc
+source ~/.bashrc
 echo "Nvim is installed"
 
-"Installing from pip"
+echo "Installing from pip"
 pip install basedpyright
 pip install black
-
 
 echo "All packages from the setup script have been installed."
